@@ -13,8 +13,8 @@ namespace AbstractTest
         /// When we want to use it we will need to implement the abstract method birdCall
         /// But we will be able to use the non abstract method birdNest
         /// </summary>
-        public abstract void birdCall();        //birdCall is an abstract method which does not yet exist
-        public void birdNest()
+        public abstract void BirdCall();        //birdCall is an abstract method which does not yet exist
+        public void BirdNest()
         {
             Console.WriteLine("zzzzz");
         }

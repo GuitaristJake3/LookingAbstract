@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbstractTest
 {
-    class Penguin : Bird
+    class Penguin : Bird, IBirdSong
     {
         /// <summary>
         /// Penugin class implements the Bird abstract class
@@ -14,21 +14,43 @@ namespace AbstractTest
         /// It overrides the abstract method birdCall of the Bird class
         /// It has a global accessor Property Volume which allows this value to be read outside of the class
         /// </summary>
-        float volume;       //This variable has class scope
-        public override void birdCall()     //Overrides abstract method from parent
+        float m_Volume;       //This variable has class scope
+        float m_Frequency;        //Warble frequncy
+        public override void BirdCall()     //Overrides abstract method from parent
         {
-            volume = 27.3f;
-            float lVolume = 2 * volume;     //Local volume has only got method scope
+            m_Volume = 27.3f;
+            float lVolume = 2 * m_Volume;     //Local volume has only got method scope
             Console.WriteLine("Squaaark at " + lVolume);
             //throw new NotImplementedException();      This was put in by VS but not needed
         }
-        public void birdNest(float f)       //Overloads the birdNest method from parent class
+        public void BirdNest(float f)       //Overloads the birdNest method from parent class
         {
             Console.WriteLine("zzzzz at " + f);
         }
+        /// <summary>
+        /// Set the bird warble frequency
+        /// </summary>
+        /// <param name="f">Is the number of times the call will be repeated when the bird warbles</param>
+        public void Frequency(float f)
+        {
+            m_Frequency = f;
+        }
+        /// <summary>
+        /// Will repeat the bird call for the number of times set by the m_Frequency
+        /// </summary>
+        public void Warble()
+        {
+            float f = m_Frequency;
+            while(f > 0)
+            {
+                BirdCall();
+                f -= 0.5f;
+            }
+        }
+
         public float Volume     //Volume property is encapsulated in Penguin class but has global scope
         {
-            get { return volume; }
+            get { return m_Volume; }
         }
     }
 }

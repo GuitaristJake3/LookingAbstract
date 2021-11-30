@@ -14,11 +14,13 @@ namespace AbstractTest
             //Bird emperor = new Bird();      Bird is abstract so it can't exist
             Penguin emperor = new Penguin();
             Console.WriteLine("The emperor starts with volume " + emperor.Volume);
-            emperor.birdCall();
+            emperor.BirdCall();
             Console.WriteLine("The emperor now has volume " + emperor.Volume);
-            //This implements polymorphism of birdNest function
-            emperor.birdNest();     //Calls base version
-            emperor.birdNest(10f);      //Calls the overloaded version
+            //This implements polymorphism of birdNest function:
+            emperor.BirdNest();     //Calls base version
+            emperor.BirdNest(10f);      //Calls the overloaded version
+            emperor.Frequency(2f);      //Implemented the Frequency interface method
+            emperor.Warble();       //Implemented Warble interface method
             Console.ReadLine();
         }
     }
